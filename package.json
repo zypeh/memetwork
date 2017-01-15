@@ -1,0 +1,18 @@
+{
+  "name": "memetwork",
+  "version": "0.1.0",
+  "description": "A blog relies on github pages, and travis CI.",
+  "main": "index.js",
+  "repository": "git@github.com:zypeh/memetwork.git",
+  "author": "zypeh <zypeh.geek@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "es6-promise": "^4.0.5",
+    "frontmatter": "^0.0.3",
+    "marked": "^0.3.6",
+    "timeago.js": "^2.0.4",
+    "vue": "^2.1.8",
+    "vue-router": "^2.1.1"
+  }
+}
