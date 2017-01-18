@@ -1,0 +1,72 @@
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    text-size-adjust: none;
+    text-rendering: optimizeLegibility;
+    image-rendering: auto;
+}
+
+body {
+    padding: 0;
+    margin: 0 auto 0;
+}
+
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button,
+input,
+select[multiple],
+textarea {
+    background-image: none;
+}
+
+button {
+    appearance: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+a, button {
+  color: $text-color;
+  text-decoration: none;
+  transition: color .5s ease, border-color .5s ease, background .5s ease, opacity 1.5s ease;
+
+  &:hover,
+  &:focus {
+    transition: color .1s ease, border-color .1s ease, background .1s ease, opacity .1s ease;
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
+
+  &[disabled] {
+    opacity: .4;
+    cursor: not-allowed;
+  }
+}
+
+img, hr { border: 0; }
+
+del { text-decoration: line-through; }
+
+::placeholder {
+    color: $text-color;
+    opacity: .2;
+
+    :focus& { color: $link-color; }
+}
