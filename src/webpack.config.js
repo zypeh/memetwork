@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const pkg = require('./package.json')
@@ -78,6 +79,32 @@ module.exports = {
                       : 'build.css',
             disable: false,
             allChunks: true
+        }),
+
+        // Minifying css
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        }),
+
+        // Minifying JS
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+
+        // Extract vendor chunks for better caching
+        new webpack.optimize.CommonsChunkPlugin({
+            neme: 'vendor'
+        }),
+
+        // Service-worker precache
+        new SWPrecachePlugin({
+            cacheId: 'zypeh-blog',
+            filename: 'service-worker.js',
+            minify: true,
+            dontCacheBustUrlsMatching: /./,
+            staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/]
         })
     ],
     devServer: {
