@@ -5,6 +5,7 @@ const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const pkg = require('./package.json')
+const conf = require('./src/config.json')
 
 const isProd = process.env.NODE_ENV === 'production'
 const favicon = conf.favicon
@@ -79,8 +80,24 @@ module.exports = {
                       : 'build.css',
             disable: false,
             allChunks: true
-        }),
+        })
+    ],
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true,
+        contentBase: 'dist/',
+        host: '0.0.0.0'
+    },
+    devtool: isProd ? false : '#eval-source-map'
+}
 
+// Production configuration
+if (isProd) {
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }),
+        
         // Minifying css
         new webpack.LoaderOptionsPlugin({
             minimize: true
@@ -106,12 +123,5 @@ module.exports = {
             dontCacheBustUrlsMatching: /./,
             staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/]
         })
-    ],
-    devServer: {
-        historyApiFallback: true,
-        noInfo: true,
-        contentbase: 'dist/',
-        host: '0.0.0.0'
-    },
-    devtool: isProd ? false : '#eval-source-map'
+    ])
 }
