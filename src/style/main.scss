@@ -74,7 +74,7 @@ $nav-padding: 1.4vmax;
     a {
         font-weight: bold;
         &:has(>code) {
-            text-decoration: @code-color;
+            text-decoration: $code-color;
         }
     }
 
@@ -95,7 +95,7 @@ $nav-padding: 1.4vmax;
         flex-direction: column;
 
         justify-content: center;
-        background: fade_in($text-color, 2%);
+        background: fade-in($text-color, 0.8);
 
         @include padding-offset($space-lg, $space-lg);
         @include margin-offset(-$space-lg, -$space-lg);
@@ -325,7 +325,7 @@ $nav-padding: 1.4vmax;
             overflow-x: auto;
             font-size: 80%;
             line-height: ($line-height * 1.2);
-            background: fade-in(#08f, 4%);
+            background: fade-in(#08f, 0.04);
             // bouncing scroll fix for iOS
             -webkit-overflow-scrolling: touch;
 

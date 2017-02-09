@@ -68,5 +68,5 @@ del { text-decoration: line-through; }
     color: $text-color;
     opacity: .2;
 
-    :focus& { color: $link-color; }
+    :focus { color: $link-color; }
 }
