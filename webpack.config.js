@@ -34,7 +34,7 @@ module.exports = {
                 options: {
                     loaders: {
                         scss: ExtractTextPlugin.extract({
-                            loader: 'css-loader?{discardComments:{removeAll: true}}!scss-loader',
+                            loader: 'css-loader?{discardComments:{removeAll:true}}!sass-loader',
                             fallback: 'vue-style-loader'
                         })
                     }
