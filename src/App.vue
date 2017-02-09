@@ -3,7 +3,7 @@
   </div>
 </template>
 
-<style lang="scss" src="./style/main.scss"></style>
+<style lang="scss" src="./style/app.scss"></style>
 
 <script>
 import config from './config.json'

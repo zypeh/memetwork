@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import ListView from '../views/List.vue'
 import PostView from '../views/Post.vue'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',

@@ -3,7 +3,7 @@
     <div v-if="!lists"></div>
     <ol v-if="lists" class="list">
       <li v-for="{ title, sha, date } in filteredList" :key="sha" class="list-item">
-        <router-link :to="'/post/' = sha" class="item-title">
+        <router-link :to="'/post/' + sha" class="item-title">
           {{ title }}
         </router-link>
         <br />
