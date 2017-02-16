@@ -1,13 +1,13 @@
 <template>
   <section class="list-view">
-    <div v-if="!lists"></div>
+    <div v-if="!lists">Loading ...</div>
     <ol v-if="lists" class="list">
       <li v-for="{ title, sha, date } in filteredList" :key="sha" class="list-item">
         <router-link :to="'/post/' + sha" class="item-title">
           {{ title }}
         </router-link>
         <br />
-        <time pubdate="pubdate" :datetile="date | format" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
+        <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
       </li>
     </ol>
   <section>
@@ -20,13 +20,13 @@ import config from '../config.json'
 export default {
   name: 'listView',
 
-  date () {
-    return { lists: null }
+  data () {
+    return { title: config.blogName, lists: null }
   },
 
   computed: {
     filteredList() {
-      let keyword = (this.$route.query.keyword || '').toUppercase()
+      let keyword = (this.$route.query.keyword || '').toUpperCase()
       // Filter by title, order by publish date, in descending order
       return this.lists
         .filter(i => (i.title.toLowerCase().indexOf(keyword) !== -1))
@@ -40,7 +40,7 @@ export default {
     loadList() {
       window.document.title = config.blogName
       api.getList()
-        .them(lists => { this.lists = lists })
+        .then(lists => { this.lists = lists })
         .catch(e => { console.error(e) })
     }
   },
