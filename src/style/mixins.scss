@@ -19,12 +19,12 @@
     opacity: .5;
 }
 
-@mixin padding-offset ($pad-left, $pad-right) {
+@mixin padding-offset ($pad-left, $pad-right : $pad-left) {
     padding-left: $pad-left;
     padding-right: $pad-right;
 }
 
-@mixin margin-offset ($mar-left, $mar-right) {
+@mixin margin-offset ($mar-left, $mar-right : $mar-left) {
     margin-left: $mar-left;
     margin-right: $mar-right;
 }
