@@ -11,6 +11,6 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/', name: 'list', component: ListView },
-    { path: 'post/:hash', name: 'post', component: PostView },
+    { path: '/post/:hash', name: 'post', component: PostView }
   ]
 })
