@@ -10,9 +10,8 @@ import { onlyTitle, onlyDate } from '../utils'
  */
 const getListUrl = () => {
   let url = `https://api.github.com/repos/${config.repo}/contents/`
-  if (config.path) url += config.path
-  if (config.branch) url += `?ref=${config.branch}`
-  return url
+  if (config.path) return `${url}${config.path}`
+  if (config.branch) return `${url}?ref=${config.branch}`
 }
 
 /**
