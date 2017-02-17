@@ -1,18 +1,20 @@
 <template>
   <div id='app'>
-    <header class="header">
-      <nav class="navigation">
-        <ul>
-          <li><router-link to="/">{{ title }}</router-link></li>
-          <li><router-link to="/about">About</router-link></li>
-        </ul>
-      </nav>
-    </header>
-    <router-view></router-view>
+    <nav class="navigation">
+      <div><a router-link to="/"><img id="logo" src="favicon.png" alt="logo"></a></div>
+      <ul>
+        <li><router-link to="/" exact>{{ title }}</router-link></li>
+        <li><router-link to="/about">About</router-link></li>
+      </ul>
+    </nav>
+    <main class="content" role="main">
+      <router-view></router-view>
+    </main>
     <footer class="footer">
-      Copyright © {{ (new Date()).getFullYear() }} |
-      Powered by <a href="https://github.com/zypeh/memetwork" target="_blank">Memetwork</a>
-      Inspired by <a href="https://github.com/viko16/vue-ghpages-blog" target="_blank">vue-ghpages-blog</a>
+      <ul>
+        <li>© zypeh {{ (new Date()).getFullYear() }}</li>
+        <li>Powered by <a href="https://github.com/zypeh/memetwork" target="_blank">Memetwork</a></li>
+      <ul>
     </footer>
   </div>
 </template>

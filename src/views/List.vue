@@ -1,15 +1,16 @@
 <template>
   <section class="list-view">
-    <div v-if="!lists">Loading ...</div>
-    <ol v-if="lists" class="list">
-      <li v-for="{ title, sha, date } in filteredList" :key="sha" class="list-item">
-        <router-link :to="'/post/' + sha" class="item-title">
-          {{ title }}
-        </router-link>
-        <br />
-        <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
-      </li>
-    </ol>
+    <main class="content" role="main">
+      <div v-if="!lists">Loading ...</div>
+      <article>
+        <div class="page-content" v-if="lists">
+          <section class="list" v-for="{ title, sha, date } in filteredList" :key="sha">
+            <router-link :to="'/post/' + sha" class="item-title">{{ title }}</router-link>
+            <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
+          </section>
+        </div>
+      </article>
+    </main>
   <section>
 </template>
 

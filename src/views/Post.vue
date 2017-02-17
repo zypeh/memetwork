@@ -1,11 +1,17 @@
 <template>
   <section class="post-view">
-    <div v-if="!content">Loading ...</div>
-    <h1 class="post-title">
-      {{ title }}
-      <time pubdate="pubdate" :datetime="this.date | formatDate" :title="this.date | formatDate" class="post-date">{{ this.date | timeago }}</time>
-    </h1>
-    <article v-if="content" v-html="htmlFromMarkdown"></article>
+    <main class="content" role="main">
+      <div v-if="!content">Loading ...</div>
+      <article>
+        <header>
+          <h1>this is me</h1>
+          <small><time pubdate="pubdate" :datetime="this.date | formatDate" :title="this.date | formatDate" class="post-date">{{ this.date | timeago }}</time></small>
+        </header>
+        <div class="page-content">
+          <article v-if="content" v-html="htmlFromMarkdown"></article>
+        </div>
+      </article>
+    </main>
   </section>
 </template>
 
