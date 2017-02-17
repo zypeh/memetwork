@@ -9,7 +9,7 @@ const conf = require('./src/config.json')
 
 const isProd = process.env.NODE_ENV === 'production'
 const favicon = conf.favicon
-                ? path.resolve(__dirname, './src/conf.json', conf.favicon)
+                ? path.resolve(__dirname, './src', conf.favicon)
                 : false
 
 module.exports = {
@@ -112,7 +112,7 @@ if (isProd) {
 
         // Extract vendor chunks for better caching
         new webpack.optimize.CommonsChunkPlugin({
-            neme: 'vendor'
+            name: 'vendor'
         }),
 
         // Service-worker precache
