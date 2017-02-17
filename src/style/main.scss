@@ -1,14 +1,46 @@
 // this is navigation
 $nav-padding: 1.4vmax;
-.nav {
+.navigation {
+    display: flex;
     padding-top: $nav-padding;
     padding-bottom: $nav-padding;
     margin-left: -1.1em;
     margin-right: -1.1em;
     font-size: 70%;
     font-weight: bold;
-    letter-spacing: .45em;
     text-transform: uppercase;
+
+    $logo-size: 60px;
+    img {
+        display: flex;
+
+        width: ($logo-size * 1.4);
+        @media (max-width: $breakpoint-lg) {
+            width: ($logo-size * 1.2);
+        }
+
+        @media (max-width: $breakpoint-md) {
+            width: $logo-size;
+            margin-left: 3vw;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+            width: ($logo-size * 0.8);
+            margin-left: 5vw
+        }
+
+        @media (max-width: $breakpoint-xs) {
+            width: ($logo-size * 0.6);
+            margin-left: 7vw;
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
 
     li {
         display: inline-block;
@@ -23,16 +55,19 @@ $nav-padding: 1.4vmax;
                 color: $link-color;
                 text-decoration: none;
             }
+            &.router-link-active {
+                color: $link-color;
+            }
         }
     }
 }
 
-// current page
-.current {
-    a {
-        color: $link-color;
-        text-decoration: underline;
-    }
+.fade-enter-active, .fade-leave-active {
+  transition: all .2s ease;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
 }
 
 // content wrapper
@@ -137,10 +172,6 @@ $nav-padding: 1.4vmax;
             }
         }
 
-        h2 {
-            margin: 1.2vmin 0 0;
-        }
-
         .image-title {
             text-indent: -999999px;
             line-height: 0;
@@ -152,8 +183,22 @@ $nav-padding: 1.4vmax;
         }
     }
 
-    h2, h3, h4, h5, h6 {
+    h2 {
         margin: 10vmin 0 1rem;
+        hyphens: none;
+        line-height: 1.1;
+        font-weight: normal;
+        opacity: .5;
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: 280%;
+        }
+
+    }
+
+    h3, h4, h5, h6 {
+        margin: 10vmin 0 1rem;
+        font-weight: bold;
         @include sub-heading;
     }
 
@@ -262,15 +307,15 @@ $nav-padding: 1.4vmax;
         position: relative;
         margin-bottom: 2.8rem;
         margin-left: calc(-$space-sx - $border-default);
-        font-size: 90%;
+        //font-size: 90%;
 
         @media (max-width: $breakpoint-sm) {
             margin-left: 0;
         }
 
         > p {
-            padding-left: $space-xs;
-            border-left: $border-default solid;
+            padding-left: $space-sm;
+            border-left: $border-lg solid $link-color;
             padding-bottom: 1.6rem;
             margin-bottom: 0;
             opacity: .6;
@@ -289,7 +334,7 @@ $nav-padding: 1.4vmax;
             cite {
                 float: right;
                 font-style: normal;
-                
+
                 &:before {
                     content: "\2500\2500\00a0";
                 }
@@ -342,6 +387,59 @@ $nav-padding: 1.4vmax;
     }
 }
 
+.header {
+    display: flex;
+    min-height: calc(100vh - (($nav-padding * 4)) - 5ex);
+    padding-top: 10vmin;
+    padding-bottom: 16vmin;
+    margin-bottom: 16vmin;
+    flex-direction: column;
+    justify-content: center;
+    @include padding-offset($space-lg);
+    @include margin-offset(-$space-lg);
+
+    @media (max-width: $breakpoint-md) {
+      min-height: calc(64vh - $nav-padding * 2 - 3ex);
+      padding-top: 16vmin;
+      padding-bottom: 16vmin;
+      @include padding-offset($space-md);
+      @include margin-offset(-$space-md);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      @include padding-offset($space-sm);
+      @include margin-offset(-$space-sm);
+    }
+
+    h1 {
+        @include heading;
+        margin-left: -2px;
+        hyphens: none;
+        line-height: 1.1;
+        color: #fff;
+
+        @media (max-width: $breakpoint-sm) {
+            font-size: 200%;
+        }
+
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        svg, img {
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: .3em;
+
+            @media (max-width: $breakpoint-sm) {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+    }
+}
+
 .footer {
     padding: 0 0 16vmin;
     font-size: 75%;
@@ -356,7 +454,7 @@ $nav-padding: 1.4vmax;
                 content: " // ";
                 opacity: .3;
             }
-            &:last-child {
+            &:last-of-type {
                 &:after {
                     content: none;
                 }
