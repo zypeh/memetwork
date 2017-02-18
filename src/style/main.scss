@@ -440,6 +440,12 @@ $nav-padding: 1.4vmax;
     }
 }
 
+.about { padding-top: 10vmin; }
+.list {
+    display: flex;
+    justify-content: space-between;
+}
+
 .footer {
     padding: 0 0 16vmin;
     font-size: 75%;

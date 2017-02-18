@@ -3,15 +3,16 @@
     <main class="content" role="main">
       <div v-if="!lists">Loading ...</div>
       <article>
-        <div class="page-content" v-if="lists">
+        <div class="page-content about" v-if="lists">
+          <h3>Posts &middot; 文章</h3>
           <section class="list" v-for="{ title, sha, date } in filteredList" :key="sha">
-            <router-link :to="'/post/' + sha" class="item-title">{{ title }}</router-link>
-            <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
+              <router-link :to="'/post/' + sha" class="item-title">{{ title }}</router-link>
+              <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
           </section>
         </div>
       </article>
     </main>
-  <section>
+  </section>
 </template>
 
 <script>

@@ -18,10 +18,6 @@
   </section>
 </template>
 
-<style lang="scss">
-.about { padding-top: 10vmin; }
-</style>
-
 <script>
 
 export default {
