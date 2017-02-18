@@ -4,7 +4,7 @@
       <div v-if="!content">Loading ...</div>
       <article>
         <header>
-          <h1>this is me</h1>
+          <h1>{{ title }}</h1>
           <small><time pubdate="pubdate" :datetime="this.date | formatDate" :title="this.date | formatDate" class="post-date">{{ this.date | timeago }}</time></small>
         </header>
         <div class="page-content">

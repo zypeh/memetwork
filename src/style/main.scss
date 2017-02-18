@@ -1,5 +1,4 @@
 // this is navigation
-$nav-padding: 1.4vmax;
 .navigation {
     display: flex;
     padding-top: $nav-padding;
@@ -120,7 +119,7 @@ $nav-padding: 1.4vmax;
 
     header {
         display: flex;
-        min-height: calc(100vh - (($nav-padding * 4)) - 5ex);
+        min-height: calc(100vh - #{$nav-padding * 4 } - 5ex);
 
         // additional padding for container
         padding-top: 10vmin;
@@ -132,21 +131,25 @@ $nav-padding: 1.4vmax;
         justify-content: center;
         background: fade-in($text-color, 0.8);
 
-        @include padding-offset($space-lg, $space-lg);
-        @include margin-offset(-$space-lg, -$space-lg);
+        @include padding-offset($space-lg);
+        @include margin-offset(-$space-lg);
 
         @media (max-width: $breakpoint-md) {
-            min-height: calc(50vh - $nav-padding * 2 - 3ex);
+            min-height: calc(64vh - #{$nav-padding * 2} - 3ex);
             padding-top: 16vmin;
             padding-bottom: 16vmin;
-            @include padding-offset($space-md, $space-md);
-            @include margin-offset(-$space-md, -$space-md);
+            @include padding-offset($space-md);
+            @include margin-offset(-$space-md);
         }
 
         @media (max-width: $breakpoint-sm) {
-            @include padding-offset($space-sm, $space-sm);
-            @include margin-offset(-$space-sm, -$space-sm);
+            @include padding-offset($space-sm);
+            @include margin-offset(-$space-sm);
         }
+
+        h1 { color: $background-color; }
+        small { display: block; margin-top: 2vmin; }
+        time { color: fade-in($background-color, .85) }
     }
 
     h1 {
@@ -189,10 +192,6 @@ $nav-padding: 1.4vmax;
         line-height: 1.1;
         font-weight: normal;
         opacity: .5;
-
-        @media (max-width: $breakpoint-sm) {
-            font-size: 280%;
-        }
 
     }
 
@@ -282,17 +281,17 @@ $nav-padding: 1.4vmax;
     iframe,
     .browser {
         display: block;
-        width: calc(100% + ($space-xs * 2) + ($border-default * 2));
-        margin: 0 calc(-$space-sm - $space-default) 1.8rem;
+        width: calc(100% + #{$space-xs * 2} + #{$border-default * 2});
+        margin: 0 calc(#{-$space-sm - $space-default}) 1.8rem;
 
         @media (max-width: $breakpoint-md) {
-            width: calc(100% + ($space-md * 2));
-            @include margin-offset(-$space-md, -$space-md);
+            width: calc(100% + #{$space-md * 2});
+            @include margin-offset(-$space-md);
         }
 
         @media (max-width: $breakpoint-sm) {
-            width: calc(100% + ($space-md * 2));
-            @include margin-offset(-$space-sm, -$space-sm);
+            width: calc(100% + #{$space-md * 2});
+            @include margin-offset(-$space-sm);
         }
 
         &.no-enlarge {
@@ -306,8 +305,7 @@ $nav-padding: 1.4vmax;
     blockquote {
         position: relative;
         margin-bottom: 2.8rem;
-        margin-left: calc(-$space-sx - $border-default);
-        //font-size: 90%;
+        margin-left: calc(-$space-xs - $border-default);
 
         @media (max-width: $breakpoint-sm) {
             margin-left: 0;
@@ -327,7 +325,7 @@ $nav-padding: 1.4vmax;
 
             @media (max-width: $breakpoint-sm) {
                 @include padding-offset(calc($space-sm - $border-default), $space-sm);
-                @include margin-offset(-$space-sm, -$space-sm);
+                @include margin-offset(-$space-sm);
             }
 
             footer { @include cf; }
@@ -365,7 +363,7 @@ $nav-padding: 1.4vmax;
 
         pre {
             padding: $space-xs;
-            @include margin-offset(-$space-xs, -$space-xs);
+            @include margin-offset(-$space-xs);
             margin-bottom: 1.8rem;
             overflow-x: auto;
             font-size: 80%;
@@ -375,13 +373,13 @@ $nav-padding: 1.4vmax;
             -webkit-overflow-scrolling: touch;
 
             @media (max-width: $breakpoint-md) {
-                @include padding-offset($space-md, $space-md);
-                @include margin-offset(-$space-md, -$space-md);
+                @include padding-offset($space-md);
+                @include margin-offset(-$space-md);
             }
 
             @media (max-width: $breakpoint-sm) {
-                @include padding-offset($space-sm, $space-sm);
-                @include margin-offset(-$space-sm, -$space-sm);
+                @include padding-offset($space-sm);
+                @include margin-offset(-$space-sm);
             }
         }
     }
@@ -389,7 +387,7 @@ $nav-padding: 1.4vmax;
 
 .header {
     display: flex;
-    min-height: calc(100vh - (($nav-padding * 4)) - 5ex);
+    min-height: calc(100vh - #{$nav-padding * 4} - 5ex);
     padding-top: 10vmin;
     padding-bottom: 16vmin;
     margin-bottom: 16vmin;
@@ -399,7 +397,7 @@ $nav-padding: 1.4vmax;
     @include margin-offset(-$space-lg);
 
     @media (max-width: $breakpoint-md) {
-      min-height: calc(64vh - $nav-padding * 2 - 3ex);
+      min-height: calc(64vh - #{$nav-padding * 2} - 3ex);
       padding-top: 16vmin;
       padding-bottom: 16vmin;
       @include padding-offset($space-md);
