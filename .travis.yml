@@ -1,0 +1,28 @@
+language: node_js
+node_js: stable
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+# Secret key
+- openssl aes-256-cbc -K $encrypted_457f68c24486_key -iv $encrypted_457f68c24486_iv
+  -in .travis/id_blog.enc -out ~\/.ssh/id_blog -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+# Git config
+- git config --global user.name "zypeh"
+- git config --global user.email zypeh.geek@gmail.com
+- git clone --branch gh-pages git@github.com:zypeh/zypeh.github.com.git dist
+install:
+- yarn
+script:
+- npm run build
+after_script:
+- cd dist
+- cp index.html 404.html
+- git add -A .
+- git commit -m "🚀 Automated Travis-CI Update"
+- git push
