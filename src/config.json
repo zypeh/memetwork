@@ -3,5 +3,5 @@
     "repo": "zypeh/thunk",
     "path": "posts",
     "branch": null,
-    "favicon": "../dist/favicon.png"
+    "favicon": "favicon.png"
 }
