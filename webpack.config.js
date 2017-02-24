@@ -42,21 +42,21 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: ['babel-loader'],
+                use: 'babel-loader',
                 exclude: /node_modules/
             },
             {
                 test: /\.json$/,
-                use: ['json-loader']
+                use: 'json-loader'
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use: [{
+                use: {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]?[chunkhash:5]'
                     }
-                }]
+                }
             }
         ],
         noParse: [
